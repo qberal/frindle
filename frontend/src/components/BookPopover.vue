@@ -15,7 +15,7 @@ import { Button } from '@/components/ui/button'
 import ListItem from '@/components/ListItem.vue'
 import axios from 'axios'
 import { ref } from 'vue'
-
+import { Badge } from '@/components/ui/badge'
 
 const isOpen = ref(false)
 
@@ -44,25 +44,36 @@ const addBookToKindle = (id: number) => {
 
 <template>
   <Drawer ref="drawerRef" v-model:open="isOpen">
-    <DrawerTrigger><ListItem :book="props.book" /></DrawerTrigger>
+    <DrawerTrigger>
+      <ListItem :book="props.book" />
+    </DrawerTrigger>
     <DrawerContent>
       <DrawerHeader>
-        <DrawerTitle class="flex items-center justify-center">Voulez-vous ajouter ce livre à votre kindle?</DrawerTitle>
+        <DrawerTitle class="flex items-center justify-center"
+          >Voulez-vous ajouter ce livre à votre kindle?
+        </DrawerTitle>
       </DrawerHeader>
 
       <div class="flex items-center justify-center flex-col">
-        <h4 class="text-lg font-semibold text-gray-900">{{ props.book.title }}</h4>
+        <h4 class="text-start text-lg font-semibold text-gray-900">{{ props.book.title }}</h4>
         <p class="text-sm text-gray-500">{{ props.book.author || 'Auteur' }}</p>
-        <p class="text-sm text-gray-500">fichier: {{ props.book.type }}</p>
-        <p class="text-sm text-gray-500">pack ? {{ props.book.isPack ? "oui" : "non" }}</p>
 
-      <img :src="props.book.cover" :alt="props.book.name" class="w-64 h-96 object-cover rounded-md shadow-sm flex items-center justify-center" />
+        <img
+          :src="props.book.cover"
+          :alt="props.book.name"
+          class="w-32 48 object-cover rounded-md shadow-sm flex items-center justify-center"
+        />
+        <div>
+          <Badge variant="outline">{{ props.book.type }}</Badge>
+          <Badge variant="outline" v-if="props.book.isPack">Pack</Badge>
+        </div>
+        <p>Titre original: {{ props.book.name }}</p>
       </div>
 
-      <DrawerFooter>
-        <Button type="submit" v-on:click="addBookToKindle(props.book.id)">Ajouter</Button>
+      <DrawerFooter class="flex items-center flex-1">
+        <Button type="submit" class="" v-on:click="addBookToKindle(props.book.id)">Ajouter</Button>
         <DrawerClose>
-          <Button variant="outline">Annuler</Button>
+          <Button class="" variant="outline">Annuler</Button>
         </DrawerClose>
       </DrawerFooter>
     </DrawerContent>

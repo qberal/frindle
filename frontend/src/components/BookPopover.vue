@@ -51,8 +51,11 @@ const addBookToKindle = (id: number) => {
       </DrawerHeader>
 
       <div class="flex items-center justify-center flex-col">
-        <h4 class="text-lg font-semibold text-gray-900">{{ props.book.name }}</h4>
+        <h4 class="text-lg font-semibold text-gray-900">{{ props.book.title }}</h4>
         <p class="text-sm text-gray-500">{{ props.book.author || 'Auteur' }}</p>
+        <p class="text-sm text-gray-500">fichier: {{ props.book.type }}</p>
+        <p class="text-sm text-gray-500">pack ? {{ props.book.isPack ? "oui" : "non" }}</p>
+
       <img :src="props.book.cover" :alt="props.book.name" class="w-64 h-96 object-cover rounded-md shadow-sm flex items-center justify-center" />
       </div>
 

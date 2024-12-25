@@ -33,10 +33,11 @@ onMounted(() => {
 
 <template>
   <main>
-
-    <h2 class="text-5xl">Frindle</h2>
-    <h3 id="info">Derniers livres ajoutés</h3>
-    <Search @search-action="searchAction"/>
+    <div class="flex flex-col justify-items-center items-center mt-16 mb-16">
+      <h2 class="text-5xl">Frindle</h2>
+      <h3 id="info">Derniers livres ajoutés</h3>
+    </div>
+    <Search @search-action="searchAction" class=""/>
     <div class="flex flex-col">
       <BookPopover :book="book" v-for="book in books" :key="book.id" />
     </div>

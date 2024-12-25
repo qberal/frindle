@@ -12,8 +12,8 @@ const handleSearch = () => {
 </script>
 
 <template>
-  <div class="flex flex-row gap-4 m-4">
-    <Input placeholder="Search for a book" v-model="searchInput"></Input>
+  <div class="flex flex-row gap-4 m-16">
+    <Input placeholder="Search for a book" v-model="searchInput" @keydown.enter="handleSearch" />
     <Button @click="handleSearch">Search</Button>
   </div>
 </template>

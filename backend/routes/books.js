@@ -62,7 +62,9 @@ router.get('/search', async (req, res) => {
 router.get('/download/:id', async (req, res) => {
   const id = req.params.id
 
-  await qbitorrent.addTorrent(id)
+  res.json(await qbitorrent.addTorrent(id))
+
+
 
 })
 

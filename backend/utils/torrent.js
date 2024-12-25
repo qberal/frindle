@@ -29,6 +29,7 @@ async function addTorrent(id) {
     });
 
     console.log('Torrent ajouté avec succès :', response.status, response.data);
+    return response.data;
   } catch (error) {
     console.error('Erreur lors de l\'ajout du torrent :', error.response?.data || error.message);
   }
